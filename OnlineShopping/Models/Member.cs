@@ -16,20 +16,21 @@ namespace OnlineShopping.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("User Email")]
+        [DisplayName("Your Email")]
         [Required(ErrorMessage = "Please input your email")]
         [Description("Use email login")]
+        [DataType(DataType.EmailAddress)]
         [MaxLength(250, ErrorMessage = "Email should be less than 250 character")]
         public string Email { get; set; }
 
-        [DisplayName("User Password")]
+        [DisplayName("Your Password")]
         [Required(ErrorMessage = "Please input your password")]
         [Description("Use SHA1-Secure Hash Algorithm encrpt password, then transform to HEX, length at 40 ")]
         [MaxLength(40, ErrorMessage = "Password should be less than 40 character")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [DisplayName("User Name")]
+        [DisplayName("Your Name")]
         [Required(ErrorMessage = "Please input your name")]
         [MaxLength(10, ErrorMessage = "User Name should be less than 10 character")]
         public string UserName { get; set; }

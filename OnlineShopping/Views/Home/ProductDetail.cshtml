@@ -1,0 +1,46 @@
+﻿@model OnlineShopping.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var ajaxOption = new AjaxOptions()
+    {
+        OnSuccess = "AddToCartSuccess",
+        OnFailure = "AddToCartFailure"
+    };
+
+}
+
+<h2>Product Detail: @Model.Name</h2>
+
+<fieldset>
+    <legend>@Html.DisplayNameFor(m => m)</legend>
+    <div class="display-label">@Html.DisplayNameFor(model => model.Description)</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
+
+    <div class="display-label">@Html.DisplayNameFor(model => model.Price)</div>
+    <div class="display-field">@Html.DisplayFor(model => model.Price)</div>
+
+    <div class="display-label">@Html.DisplayNameFor(model => model.PublishOn)</div>
+    <div class="display-field">@Html.DisplayFor(model => model.PublishOn)</div>
+</fieldset>
+
+<p>@Ajax.ActionLink("Add To Cart", "AddToCart", "Cart", ajaxOption)</p>
+
+
+
+
+@section scripts
+{
+    <script>
+        function AddToCartSuccess() {
+            alert('AddToCartSuccess');
+        }
+        function AddToCartFailure(xhr) {
+            alert('AddToCartFailure, HTTP status:' + xhr.status);
+        }
+    </script>
+    }

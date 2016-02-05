@@ -7,6 +7,8 @@ using System.Web;
 
 namespace OnlineShopping.Models
 {
+    [DisplayName("Product Category")]
+    [DisplayColumn("Name")]
     public class ProductCategory
     {
         [Key]

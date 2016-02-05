@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OnlineShopping.Models.Product>
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var ajaxOption = new AjaxOptions()
+    {
+        OnSuccess = "AddToCartSuccess",
+        OnFailure = "AddToCartFailure",
+        HttpMethod = "Post"
+    };
+}
+
+<h2>@Html.DisplayNameFor(model => model.ToList()[0])</h2>
+
+<h3>Current Category: @Model.First().ProductCategory.Name</h3>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayNameFor(model => model.Price)</th>
+        <th>Add To Cart</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(item.Name, "ProductDetail", new { id = item.Id })</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Ajax.ActionLink("Add To Cart", "AddToCart", "ShoppingCart", new { ProductId = item.Id }, ajaxOption)</td>
+        </tr>
+    }
+</table>
+
+
+
+
+
+
+@section scripts
+{
+ <script>
+     function AddToCartSuccess()
+     {
+         alert('AddToCartSuccess');
+     }
+     function AddToCartFailure(xhr)
+     {
+         alert('AddToCartFailure, HTTP status:' + xhr.status);
+     }
+    </script>  
+    }
+

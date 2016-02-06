@@ -19,5 +19,6 @@ namespace OnlineShopping.Models
         [MaxLength(20, ErrorMessage = "Category name less than 20 character")]
         public string Name { get; set; }
 
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

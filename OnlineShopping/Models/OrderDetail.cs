@@ -32,5 +32,6 @@ namespace OnlineShopping.Models
         [DisplayName("Quantity")]
         [Required]
         public int Amount { get; set; }
+        
     }
 }

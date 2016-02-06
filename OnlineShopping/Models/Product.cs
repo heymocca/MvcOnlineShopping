@@ -19,7 +19,7 @@ namespace OnlineShopping.Models
 
         [DisplayName("Product Category")]
         [Required]
-        public ProductCategory ProductCategory { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
 
         [DisplayName("Product Name")]
         [Required(ErrorMessage = "Please input product name")]

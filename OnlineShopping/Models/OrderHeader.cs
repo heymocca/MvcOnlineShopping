@@ -15,7 +15,7 @@ namespace OnlineShopping.Models
 
         [DisplayName("User Name")]
         [Required]
-        public Member Member { get; set; }
+        public virtual Member Member { get; set; }
 
         [DisplayName("Receiver Name")]
         [Required(ErrorMessage = "Please input receiver name")]
@@ -51,6 +51,10 @@ namespace OnlineShopping.Models
         {
             get { return "User Name: " + this.Member.UserName + ", purchase time:" + this.BuyOn; }
         }
+
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        
 
     }
 }

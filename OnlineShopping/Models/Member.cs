@@ -48,5 +48,7 @@ namespace OnlineShopping.Models
         [MaxLength(36)]
         [Description("If AuthCode == null, whose email has been verified")]
         public string AuthCode { get; set; }
+
+        public virtual ICollection<OrderHeader> OrderHeaders { get; set; }
     }
 }

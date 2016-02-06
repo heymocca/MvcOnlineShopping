@@ -1,0 +1,85 @@
+﻿@model List<OnlineShopping.Models.ShoppingCart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var ajaxOption = new AjaxOptions()
+    {
+        OnSuccess = "RemoveCartSuccess",
+        OnFailure = "RemoveCartFailure",
+        Confirm = "Are you sure to remove this product?",
+        HttpMethod = "Post"
+    };
+
+}
+
+
+<h3>Shopping Cart</h3>
+
+@using (Html.BeginForm("UpdateAmount", "ShoppingCart"))
+{
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+        <th></th>
+    </tr>
+
+    @{ int subTotal = 0; }
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        // Total Amount
+        subTotal += Model[i].Product.Price * Model[i].Amount;
+
+        // Quantity
+        var ddlAmountList = new SelectList(Enumerable.Range(1, 10), Model[i].Amount);
+
+        @Html.HiddenFor(modelItem => Model[i].Product.Id )
+
+        <tr>
+            <td>@Html.DisplayFor(modelItem => Model[i].Product.Name)</td>
+            <td>NT$ @(Model[i].Product.Price)</td>
+            <td>@Html.DropDownListFor(modelItem => Model[i].Amount, ddlAmountList)</td>
+            <td>NT$ @(Model[i].Product.Price * Model[i].Amount)</td>
+            <td>
+                @Ajax.ActionLink("Remove","Remove", new { ProductId=Model[i].Product.Id}, ajaxOption)
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Total Amount</th>
+        <th id="subTotal">NT$ @subTotal</th>
+        <th></th>
+    </tr>
+</table>
+<p>
+    <input type="submit" class="btn btn-default" value="Update"/>
+    <input type="button" class="btn btn-success" value="Complete" 
+           onclick="location.href = '@Url.Action("Complete","Order")';"/>
+</p>
+
+
+}
+
+@section scripts
+{
+    <script>
+        function RemoveCartSuccess()
+        {
+            alert("Remove Success");
+            location.reload();
+        }
+         function RemoveCartFail(xhr)
+        {
+            alert("Remove Fail, HTTP Status:" + xhr.status );
+         }
+    </script>
+}

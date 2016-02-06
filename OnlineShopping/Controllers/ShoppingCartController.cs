@@ -9,6 +9,13 @@ namespace OnlineShopping.Controllers
     public class ShoppingCartController : Controller
     {
 
+        // List shopping cart items
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
         // Post: ShoppingCart
         // Add product to shopping cart, if no value pass from amount, then quantity is 1 by default.
         // Using Ajax calls this action.
@@ -17,12 +24,7 @@ namespace OnlineShopping.Controllers
         {
             return View();
         }
-
-        // List shopping cart items
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
 
         // Remove items from shopping cart, using Ajax calls this action.
         [HttpPost]
@@ -30,6 +32,7 @@ namespace OnlineShopping.Controllers
         {
             return View();
         }
+
 
         // Update shopping cart, using Ajax calls this action.
         public ActionResult UpdateAmount(int ProductId, int NewAmout)

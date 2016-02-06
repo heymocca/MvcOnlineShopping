@@ -7,10 +7,10 @@ using OnlineShopping.Models;
 
 namespace OnlineShopping.DAL
 {
-    public class DefaultConnection : DbContext
+    public class OnlineShoppingContext : DbContext
     {
 
-        public DefaultConnection()
+        public OnlineShoppingContext()
             : base("name=DefaultConnection")
         {
         }

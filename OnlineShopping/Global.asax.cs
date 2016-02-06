@@ -15,7 +15,7 @@ namespace OnlineShopping
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DefaultConnection>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<OnlineShoppingContext>());
 
             AreaRegistration.RegisterAllAreas();
 

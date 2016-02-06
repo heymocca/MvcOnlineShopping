@@ -37,7 +37,7 @@ namespace OnlineShopping.Models
 
         [DisplayName("Product Price")]
         [Required(ErrorMessage = "Please input product price")]
-        [Range(99, 1000, ErrorMessage = "Product price should be between 99 ~ 1000")]
+        [Range(1, 1000, ErrorMessage = "Product price should be between 1 ~ 1000")]
         public int Price { get; set; }
 
         [DisplayName("Publish Time")]

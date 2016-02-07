@@ -17,7 +17,7 @@ namespace OnlineShopping.Controllers
         {
             var data = db.PorductCategories.ToList();
 
-            // Give some data for testing
+            #region // Give some data for testing
             if ( data.Count == 0 )
             {
                 db.PorductCategories.Add(new ProductCategory() { Id = 1, Name = "MEN" });
@@ -29,6 +29,7 @@ namespace OnlineShopping.Controllers
 
             data = db.PorductCategories.ToList();
             }
+            #endregion
             return View(data);
         }
         #endregion
@@ -38,47 +39,40 @@ namespace OnlineShopping.Controllers
         {
             var productCategory = db.PorductCategories.Find(id);
 
+            var data = productCategory.Products.ToList();
+
+            return View(data);
+
+            #region// Date for testing
             //if (productCategory != null)
             //{
-                var data = productCategory.Products.ToList();
+            //    var data = productCategory.Products.ToList();
 
-                //if (data.Count == 2)
-                //{
-                //    productCategory.Products.Add(new Product()
-                //    {
-                //        Name = productCategory.Name + "Snapback Cap",
-                //        Color = Color.Black,
-                //        Description = "Chicago Bulls NBA HWC Suedebuck 9FIFTY Snapback Cap",
-                //        Price = 20,
-                //        ProductCategory = productCategory,
-                //        PublishOn = DateTime.Now
-                //    });
-                //    productCategory.Products.Add(new Product()
-                //    {
-                //        Name = productCategory.Name + "Snapback Cap",
-                //        Color = Color.White,
-                //        Description = "New Era NFL Super Bowl Team Rival 9FIFTY Snapback Cap",
-                //        Price = 30,
-                //        ProductCategory = productCategory,
-                //        PublishOn = DateTime.Now
-                //    });
+            //    if (data.Count < 4)
+            //    {
+            //        productCategory.Products.Add(new Product()
+            //        {
+            //            Name = productCategory.Name + "Belt",
+            //            Color = ColorTranslator.ToHtml(Color.Green),
+            //            Description = "New Era Canvas Belt",
+            //            Price = 20,
+            //            ProductCategory = productCategory,
+            //            PublishOn = DateTime.Now
+            //        });
 
-                //    db.SaveChanges();
 
-                //    data = productCategory.Products.ToList();
-                //}
+            //        db.SaveChanges();
 
-                return View(data);
+            //        data = productCategory.Products.ToList();
+            //    }
+
+            //    return View(data);
             //}
             //else
             //{
             //    return HttpNotFound();
             //}
-
-            
-
-           
-
+            #endregion
             
         }
         #endregion

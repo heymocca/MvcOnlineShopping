@@ -31,9 +31,9 @@ namespace OnlineShopping.Models
         [MaxLength(250, ErrorMessage = "Product description should be less than 250 character")]
         public string Description { get; set; }
 
-        [DisplayName("Product Color")]
-        [Required(ErrorMessage = "Please select color")]
-        public Color Color { get; set; }
+        //[DisplayName("Product Color")]
+        //[Required(ErrorMessage = "Please select color")]
+        //public Color Color { get; set; }
 
         [DisplayName("Product Price")]
         [Required(ErrorMessage = "Please input product price")]
@@ -43,5 +43,9 @@ namespace OnlineShopping.Models
         [DisplayName("Publish Time")]
         [Description("If no publish time, then never be published")]
         public DateTime? PublishOn { get; set; }
+
+        [DisplayName("Product Color")]
+        [Required(ErrorMessage = "Please select color")]
+        public string Color { get; set; }
     }
 }

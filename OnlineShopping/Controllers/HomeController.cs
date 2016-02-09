@@ -43,7 +43,7 @@ namespace OnlineShopping.Controllers
 
             return View(data);
 
-            #region// Date for testing
+            #region// Data for testing
             //if (productCategory != null)
             //{
             //    var data = productCategory.Products.ToList();

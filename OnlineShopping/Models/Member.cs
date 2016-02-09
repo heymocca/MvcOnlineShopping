@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using System.Web.Mvc;
 
 namespace OnlineShopping.Models
 {
@@ -21,6 +22,7 @@ namespace OnlineShopping.Models
         [Description("Use email login")]
         [DataType(DataType.EmailAddress)]
         [MaxLength(250, ErrorMessage = "Email should be less than 250 character")]
+        [Remote("ChkEmail","Member",HttpMethod="POST",ErrorMessage = "This email already exsits!")]
         public string Email { get; set; }
 
         [DisplayName("Your Password")]
